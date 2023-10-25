@@ -1,0 +1,17 @@
+# name your workflow
+name: hello-world
+# set-up workflow's trigger event
+on: push # the workflow will run when you push a commit or tag, or when you create a repo from a template
+# define a job (whan happens when a workflow runs by creating a job)
+jobs: 
+  hello-world-job:
+    # specify a runner
+    runs-on: ubuntu-latest # there are GitHub hosted runners and self-hosted runners
+    # add a step to run your first action
+    steps:
+      # you'll want to use checkout actions everytime your workflow will need to access repositories content
+      - name: check out repo code # naming will help you track down error when your workflow become more complicated
+        uses: actions/checkout@v3
+        # say Hello World!
+      - run: echo "$(cat hello-world.txt)"
+  
